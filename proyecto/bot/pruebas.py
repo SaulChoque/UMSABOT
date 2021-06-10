@@ -98,7 +98,7 @@ async def on_member_join(member):
 
 #--------------------------------------------------------------------------------
 
-bot.run('ODQ5MDUxMzE4NDA3NTI4NTE5.YLViqA.ig-ToKfRX6nEoQ-ye5dFNfOmkkw')
+bot.run('AQUI EL CODIGO PRIVADO')
 
 
 
