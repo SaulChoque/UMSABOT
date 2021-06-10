@@ -1,0 +1,52 @@
+#ESTA MADRE ES PAL YUTU xdddd
+
+
+@bot.command()
+async def youtube(ctx, *, search):
+    query_string = parse.urlencode({'search_query': search})
+    html_content = request.urlopen('https://www.youtube.com/results?search_query=' + query_string)
+    # print(html_content.read().decode())
+    search_results = re.findall(r'watch\?v=(\S{11})', html_content.read().decode())
+    print(search_results)
+    # I will put just the first result, you can loop the response to show more results
+    await ctx.send('https://www.youtube.com/watch?v=' + search_results[0])
+
+
+B O T O N E S
+
+    
+@bot.command()
+async def boton(ctx):
+    n=await ctx.send(
+        "ESTE ES UN MENU DE PRUEBA",
+            components=[
+            Button(style=ButtonStyle.red, label="Red"),
+            Button(style=ButtonStyle.blue, label="Yellow"),
+            Button(style=ButtonStyle.green, label="Green"),
+            Button(style=ButtonStyle.URL, label="Canal de YouTube", url="https://www.youtube.com/channel/UCEdII-qgp9dJnCYW6kgPuHg"),
+        ],
+    )
+
+    res = await bot.wait_for("button_click")
+    if res.channel == ctx.channel:
+        await res.respond(
+            type=InteractionType.ChannelMessageWithSource,
+            content=f'{res.component.label} apretado'
+
+await ctx.send(embed=embed)
+    n=await ctx.send(
+        "ESTE ES UN MENU DE PRUEBA",
+            components=[
+            Button(style=ButtonStyle.red, label="Boton 1"),
+            Button(style=ButtonStyle.blue, label="Boton 2"),
+            Button(style=ButtonStyle.green, label="Boton 3"),
+            Button(style=ButtonStyle.URL, label="Canal de YouTube", url="https://www.youtube.com/channel/UCEdII-qgp9dJnCYW6kgPuHg"),
+        ],
+    )
+
+    res = await bot.wait_for("button_click")
+    if res.channel == ctx.channel:
+        await res.respond(
+            type=InteractionType.ChannelMessageWithSource,
+            content=f'{res.component.label} clicked'
+        )
